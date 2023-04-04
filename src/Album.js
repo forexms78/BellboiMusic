@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -16,17 +15,13 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import DarkModeButton from './\bcomponent/DarkModeButton';
-import Copyright from './\bcomponent/Copyright';
+import { useState } from 'react';
+import Footer from './\bcomponent/Footer';
 
-
-
-
-<Copyright/>
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-
-
 export default function Album() {
+
   const [isDarkMode, setIsDarkMode] = useState(false);
 
 
@@ -40,6 +35,7 @@ export default function Album() {
   });
 
   const toggleDarkMode = () => {
+    console.log("내부")
     setIsDarkMode(!isDarkMode);
   };
 
@@ -49,14 +45,16 @@ export default function Album() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBar position="relative">
-        <Button onClick={toggleDarkMode}>
+        <DarkModeButton onClick={toggleDarkMode}>
+        {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+      </DarkModeButton>
+      <Button onClick={toggleDarkMode}>
         {isDarkMode ? 'Light Mode' : 'Dark Mode'}
       </Button>
-      <DarkModeButton/>
         <Toolbar color="red">
           <LibraryMusicIcon sx={{ mr: 2 }} />
           <Typography variant="h6" color="inherit" noWrap>
-          Welcome to Bellboi Music Recommendation Site
+         ringmybellboi 플레이리스트
 
           </Typography>
           
@@ -80,11 +78,14 @@ export default function Album() {
               color="text.primary"
               gutterBottom
             >
-              Album layout
+              YOUTUBE MUSIC을 기반으로 연결됩니다.
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-            If you do not have YouTube Premium, please use the YouTube button. It will lead you to the corresponding link.
+            YouTube 프리미엄이 없으시면 YouTubeMusic이 아닌 YouTube 링크를 눌러주세요!
             </Typography>
+
+
+
             <Stack
               sx={{ pt: 4 }}
               direction="row"
@@ -92,16 +93,18 @@ export default function Album() {
               justifyContent="center"
             >
             <a href="https://music.youtube.com/watch?v=GWfNH5UuJL4&feature=share" target="_blank" rel="noopener noreferrer">
-            <Button variant="contained">Link to YouTube Music</Button>
+            <Button variant="contained">YouTube Music</Button>
     </a>
     <a href="https://www.youtube.com/watch?v=2BzLz8pPS1c" target="_blank" rel="noopener noreferrer">
-    <Button variant="outlined">Link to YouTube Playlist</Button>
+    <Button variant="outlined">YouTube</Button>
 
     </a>
             
             
              
             </Stack>
+
+
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
@@ -109,52 +112,28 @@ export default function Album() {
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
-              
-                {/* <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                >
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
-                    image="https://source.unsplash.com/random"
-                    alt="random"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
-                  </CardActions>
-                </Card> */}
                 <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt="single"
         height="140"
         image="/static/images/cards/contemplative-reptile.jpg"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          Single
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          원슈타인
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+      <a href="https://music.youtube.com/watch?v=GWfNH5UuJL4&feature=share" target="_blank" rel="noopener noreferrer">
+        <Button size="small">YouTube Music</Button>
+        </a>
+      <a href="https://www.youtube.com/watch?v=2BzLz8pPS1c" target="_blank" rel="noopener noreferrer">
+        <Button size="small">Just YouTube</Button>
+        </a>
       </CardActions>
     </Card>
               </Grid>
@@ -162,21 +141,9 @@ export default function Album() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box>
+   
+      <Footer/>
+
       {/* End footer */}
     </ThemeProvider>
   );

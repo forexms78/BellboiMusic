@@ -3,10 +3,12 @@ import { Button, IconButton } from '@mui/material';
 import { Brightness4, Brightness7 } from '@mui/icons-material';
 
 function DarkModeButton() {
-  const [darkMode, setDarkMode] = useState(false);
+  
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    console.log("외부")
+    setIsDarkMode(!isDarkMode);
   };
 
   return (
@@ -15,7 +17,7 @@ function DarkModeButton() {
       onClick={toggleDarkMode}
     >
       <IconButton size="large">
-        {darkMode ? <Brightness7 /> : <Brightness4 />}
+        {isDarkMode ? <Brightness7 /> : <Brightness4 />}
       </IconButton>
     </Button>
   );
