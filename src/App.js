@@ -1,4 +1,4 @@
-import Album from './Album';
+import WorkoutTracker from './\bWorkoutTracker';
 import './App.css';
 import * as React from 'react';
 
@@ -7,7 +7,7 @@ import * as React from 'react';
 function App() {
   return (
     <div>
-        <Album />
+        <WorkoutTracker />
     </div>
   );
 }
