@@ -17,12 +17,12 @@ import SignUp from "./SignUp";
 
 <Copyright/>
 
+
+
 const theme = createTheme();
 
-const goToSignUp = () => {
-    console.log("넘어가지는")
-    window.location.href = "./SignUp"
-}
+
+<SignUp/>
 
 export default function SignInSide() {
   const handleSubmit = (event) => {
@@ -115,9 +115,9 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link onClick={goToSignUp} to={SignUp.url} variant="body2">
+                 
                     {"계정이 없나요? 회원가입하기"}
-                  </Link>
+                
                 </Grid>
               </Grid>
               <Copyright sx={{ mt: 5 }} />
