@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Button, IconButton } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import List from "@mui/material/List";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemButton from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
-import Grid from "@mui/material/Grid"; // Grid version 1
+import { Button } from "@mui/material";
+
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import WorkoutList from "./\bcomponent/WorkoutList";
 
 const WorkoutTracker = () => {
+  // 다크모드 state 활용
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   // 운동 내용을 저장할 state
   const [workouts, setWorkouts] = useState([]);
 
@@ -23,14 +23,33 @@ const WorkoutTracker = () => {
     setWorkouts(newWorkouts);
   };
 
+  // 다크 모드 전환하는 함수
+  const toggleDarkMode = () => {
+    console.log("내부");
+    setIsDarkMode(!isDarkMode);
+  };
+
+  // 테마 함수
+  const theme = createTheme({
+    palette: {
+      mode: isDarkMode ? "dark" : "light",
+      primary: {
+        main: "#c4302b", // change this to your desired color
+      },
+    },
+  });
+
   return (
-    <div>
-      <h1>나의 운동 일지</h1>
-      {/* WorkoutForm 컴포넌트 렌더링 */}
-      <WorkoutForm addWorkout={addWorkout} />
-      {/* WorkoutList 컴포넌트 렌더링 */}
-      <WorkoutList workouts={workouts} deleteWorkout={deleteWorkout} />
-    </div>
+    <ThemeProvider theme={theme}>
+      {" "}
+      <div>
+        <h1>나의 운동 일지</h1>
+        {/* WorkoutForm 컴포넌트 렌더링 */}
+        <WorkoutForm addWorkout={addWorkout} />
+        {/* WorkoutList 컴포넌트 렌더링 */}
+        <WorkoutList workouts={workouts} deleteWorkout={deleteWorkout} />
+      </div>
+    </ThemeProvider>
   );
 };
 
@@ -87,42 +106,6 @@ const WorkoutForm = ({ addWorkout }) => {
   );
 };
 
-const WorkoutList = ({ workouts, deleteWorkout }) => {
-  return (
-    <div>
-      <Grid container spacing={2} columns={16}>
-        <Grid xs={8}>
-          <div>xs=8</div>
-        </Grid>
-        <Grid xs={8}>
-          <div>xs=8</div>
-        </Grid>
-      </Grid>
-      <h2>나의 운동 리스트</h2>
-      <List component="nav" aria-label="운동 리스트">
-        {/* workouts 배열을 매핑하여 리스트 아이템 렌더링 */}
-        {workouts.map((workout, index) => (
-          <div key={index}>
-            <ListItemButton>
-              <ListItemText
-                primary={workout.exercise}
-                secondary={`${workout.weight}kg, ${workout.reps}회`}
-              />
-              {/* deleteWorkout 함수 호출 */}
-              <IconButton
-                onClick={() => deleteWorkout(index)}
-                aria-label="삭제"
-              >
-                <DeleteIcon />
-              </IconButton>
-            </ListItemButton>
-            {/* Add a divider after each item except the last one */}
-            {index !== workouts.length - 1 && <Divider />}
-          </div>
-        ))}
-      </List>
-    </div>
-  );
-};
+<WorkoutList/>
 
 export default WorkoutTracker;
