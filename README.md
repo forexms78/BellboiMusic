@@ -1,3 +1,7 @@
+# 프론트엔드 연습 메모장
+
+JS와 React , CSS 공부하고 있습니다.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
