@@ -49,6 +49,7 @@ const WorkoutTracker = () => {
         <WorkoutForm addWorkout={addWorkout} />
         {/* WorkoutList 컴포넌트 렌더링 */}
         <WorkoutList workouts={workouts} deleteWorkout={deleteWorkout} />
+        <toggleDarkMode/>
       </div>
     </ThemeProvider>
   );

@@ -17,8 +17,8 @@ import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import DarkModeButton from "./\bcomponent/DarkModeButton";
 import { useState } from "react";
 import Footer from "./\bcomponent/Footer";
+import Gugudan from "./\bcomponent/Gugudan";
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Album() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -109,8 +109,7 @@ export default function Album() {
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+              <Grid item xs={12} sm={6} md={4}>
                 <Card sx={{ maxWidth: 345 }}>
                   <CardMedia
                     component="img"
@@ -120,14 +119,15 @@ export default function Album() {
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                      Single
+                      구구단
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      원슈타인
+                      두수를 곱한 값을 적는 게임
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <a
+                  <Gugudan/>
+                    {/* <a
                       href="https://music.youtube.com/watch?v=GWfNH5UuJL4&feature=share"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -140,11 +140,10 @@ export default function Album() {
                       rel="noopener noreferrer"
                     >
                       <Button size="small">Just YouTube</Button>
-                    </a>
+                    </a> */}
                   </CardActions>
                 </Card>
               </Grid>
-            ))}
           </Grid>
         </Container>
       </main>
