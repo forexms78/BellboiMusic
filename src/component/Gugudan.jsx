@@ -7,7 +7,7 @@ const Gugudan = () => {
   const [result, setResult] = useState();
   const [count, setCount] = useState(0);
   const [WinCount, setWinCount] = useState(0);
-  const [LoseCount, setLoseCount] = useState(0);
+  const [LastAnswer, setLastAnswer] = useState();
   // useRef는 React Hook 이라고 한다 화면이 리랜더링될때 바뀌는거 같다
   const inputElement = useRef(null);
 
@@ -21,6 +21,7 @@ const Gugudan = () => {
         setResult('정답');
         setFirst(Math.ceil(Math.random() * 9));
         setSecond(Math.ceil(Math.random() * 9));
+        setLastAnswer(value);
         setValue('');
         setWinCount(WinCount + 1);
         // focus를 사용하면 커서가 다시 입력창으로 간다
@@ -30,8 +31,8 @@ const Gugudan = () => {
         setResult('땡');
         setFirst(Math.ceil(Math.random() * 9));
         setSecond(Math.ceil(Math.random() * 9));
+        setLastAnswer(first * second);
         setValue('');
-        setLoseCount(LoseCount + 1);
         inputElement.current.focus();
     }
   };
@@ -50,7 +51,7 @@ const Gugudan = () => {
         />
         <button>입력!</button>
       </form>
-      <div id="result">{result} [정답률 : {Math.ceil(WinCount/count*100)}%][총게임수:{count}]</div>
+      <div id="result">[{result}] [{result === '땡' ? '정답은?' : ''} {LastAnswer}]</div><div>[정답률 : {Math.ceil(WinCount/count*100)}%][총게임수:{count}]</div>
     </div>
   );
 };

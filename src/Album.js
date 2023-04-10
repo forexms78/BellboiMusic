@@ -111,12 +111,12 @@ export default function Album() {
           <Grid container spacing={4}>
               <Grid item xs={12} sm={6} md={4}>
                 <Card sx={{ maxWidth: 345 }}>
-                  <CardMedia
+                  {/* <CardMedia
                     component="img"
                     alt="single"
                     height="140"
                     image="/static/images/cards/contemplative-reptile.jpg"
-                  />
+                  /> */}
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                       구구단
