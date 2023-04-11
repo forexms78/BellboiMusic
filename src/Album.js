@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
@@ -18,6 +17,7 @@ import DarkModeButton from "./\bcomponent/DarkModeButton";
 import { useState } from "react";
 import Footer from "./\bcomponent/Footer";
 import Gugudan from "./\bcomponent/Gugudan";
+import WordRelay from "./\bcomponent/WordRelay";
 
 
 export default function Album() {
@@ -144,7 +144,33 @@ export default function Album() {
                   </CardActions>
                 </Card>
               </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <Card sx={{ maxWidth: 345 }}>
+                  {/* <CardMedia
+                    component="img"
+                    alt="single"
+                    height="140"
+                    image="/static/images/cards/contemplative-reptile.jpg"
+                  /> */}
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      끝말잇기
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      단어의 마지막 글자로 시작하는 단어를 찾는 게임
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                  <WordRelay/>
+                  </CardActions>
+                </Card>
+              </Grid>
           </Grid>
+
+
+
+          
         </Container>
       </main>
 
